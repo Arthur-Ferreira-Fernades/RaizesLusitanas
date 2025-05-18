@@ -1,0 +1,122 @@
+/* Fonte principal */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #f6f4f1;
+    color: #333;
+  }
+  
+  /* Header */
+  .topo {
+    background-color: #c62828;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container-header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .boas-vindas {
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .btn-sair {
+    background-color: #fff;
+    color: #c62828;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-sair:hover {
+    background-color: #f1e4d8;
+  }
+  
+  /* Conteúdo principal */
+  .conteudo {
+    padding: 30px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .titulo {
+    font-size: 2em;
+    color: #c62828;
+    margin-bottom: 20px;
+  }
+  
+  .processos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .card-processo {
+    background-color: #fff;
+    border-left: 5px solid #c62828;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+  
+  .card-processo:hover {
+    transform: translateY(-3px);
+  }
+  
+  .card-processo h2 {
+    color: #c62828;
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+  
+  .card-processo p {
+    margin: 8px 0;
+    line-height: 1.4;
+  }
+  
+  .sem-processos {
+    font-style: italic;
+    color: #666;
+  }
+  .barra-progresso {
+    width: 100%;
+    height: 16px;
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px 0 5px 0;
+  }
+  
+  .barra-preenchida {
+    height: 100%;
+    background-color: #c62828; /* cor principal */
+    border-radius: 8px 0 0 8px;
+    transition: width 0.5s ease;
+  }
+  
+  .texto-porcentagem {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  

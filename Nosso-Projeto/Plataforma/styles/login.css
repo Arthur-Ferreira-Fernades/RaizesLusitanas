@@ -1,0 +1,100 @@
+body.login-bg {
+    background: url('../img/imagemFundoLogin.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    min-height: 100vh;
+}
+
+.login-card {
+    background-color: #f8f4e3; /* bege claro */
+    max-width: 420px;
+    width: 100%;
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
+    transition: transform 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    object-fit: contain;
+}
+
+.btn-primary {
+    background-color: #c62828; /* verde oliva */
+    border-color: #c62828;
+    transition: background-color 0.3s ease;
+    color: #f8f4e3; /* bege para texto */
+}
+
+.btn-primary:hover {
+    background-color: #435823; /* verde oliva escuro */
+    border-color: #435823;
+    color: #f8f4e3;
+}
+
+.btn-outline-primary {
+    color: #c62828;
+    border-color: #c62828;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #cda34f; /* dourado suave */
+    border-color: #cda34f;
+    color: #f8f4e3;
+}
+
+.form-label {
+    color: #c62828;
+    font-weight: 600;
+}
+
+.form-recuperacao {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .form-recuperacao a {
+    color: #c62828;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .form-recuperacao a:hover {
+    text-decoration: underline;
+  }
+  .mensagem {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.msg-sucesso {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+.msg-erro {
+    background-color: #fdecea;
+    color: #b00020;
+    border: 1px solid #b00020;
+}
+

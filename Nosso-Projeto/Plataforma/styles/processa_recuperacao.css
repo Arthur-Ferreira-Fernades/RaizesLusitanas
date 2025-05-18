@@ -1,0 +1,99 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: #fff5f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .container-recuperacao {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(198, 40, 40, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .container-recuperacao h2 {
+    color: #c62828;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  input[type="password"] {
+    padding: 12px 15px;
+    border: 1.5px solid #c62828;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #8e1a1a;
+    box-shadow: 0 0 5px rgba(198, 40, 40, 0.5);
+  }
+  
+  button {
+    background-color: #c62828;
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #8e1a1a;
+  }
+  
+  .mensagem-erro,
+  .mensagem-sucesso {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  
+  .mensagem-erro {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+  
+  .mensagem-sucesso {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+  
+  @media (max-width: 480px) {
+    .container-recuperacao {
+      padding: 20px;
+    }
+  
+    button {
+      font-size: 1rem;
+    }
+  }
+  

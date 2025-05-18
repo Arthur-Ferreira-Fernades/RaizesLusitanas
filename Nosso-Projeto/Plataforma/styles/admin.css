@@ -1,0 +1,173 @@
+/* admin.css - localizado na pasta styles */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background-color: #f6f4f1;
+  color: #333;
+}
+
+.topo {
+  background-color: #c62828;
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container-header {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.boas-vindas {
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-sair {
+  background-color: #fff;
+  color: #c62828;
+  padding: 8px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-sair:hover {
+  background-color: #f1e4d8;
+}
+
+.conteudo {
+  padding: 30px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2em;
+  color: #c62828;
+  margin-bottom: 20px;
+}
+
+.tabela-admin table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-admin th,
+.tabela-admin td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.tabela-admin th {
+  background-color: #c62828;
+  color: white;
+  font-weight: bold;
+}
+
+.tabela-admin tr:hover {
+  background-color: #fdf1f1;
+}
+
+.barra-progresso {
+  background-color: #ddd;
+  border-radius: 8px;
+  width: 100px;
+  height: 16px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.barra-preenchida {
+  background-color: #c62828;
+  /* cor principal */
+  height: 100%;
+  border-radius: 8px 0 0 8px;
+  transition: width 0.4s ease;
+}
+
+.texto-porcentagem {
+  font-weight: 600;
+  font-size: 0.9rem;
+  vertical-align: middle;
+  color: #333;
+}
+
+.filtros-admin {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filtros-admin input,
+.filtros-admin select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.filtros-admin button {
+  padding: 8px 16px;
+  background-color: #006600;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filtros-admin button:hover {
+  background-color: #015301;
+}
+
+.filtros-admin .btn-limpar,
+.filtros-admin .btn-exportar {
+  padding: 8px 16px;
+  background-color: #006600;
+  color: white;
+  border: 1px solid #006600;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.filtros-admin .btn-limpar:hover {
+  background-color: #015301;
+}
+
+.filtros-admin .btn-exportar {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+}
+
+.filtros-admin .btn-exportar:hover {
+  background-color: #1b5e20;
+}

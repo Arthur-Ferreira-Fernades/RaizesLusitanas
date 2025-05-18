@@ -1,0 +1,54 @@
+.container-recupera {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+
+  .container-recupera h2 {
+    text-align: center;
+    color: #c62828;
+    margin-bottom: 20px;
+  }
+
+  .container-recupera input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .container-recupera button {
+    width: 100%;
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .container-recupera button:hover {
+    background-color: #a32121;
+  }
+
+  .voltar-login {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .voltar-login a {
+    color: #c62828;
+    text-decoration: none;
+  }
+
+  .voltar-login a:hover {
+    text-decoration: underline;
+  }
