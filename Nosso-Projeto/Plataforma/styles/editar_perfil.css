@@ -1,0 +1,21 @@
+.form-group {
+    margin-bottom: 15px;
+  }
+  .form-group input[readonly] {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  .form-group button {
+    margin-left: 10px;
+  }
+
+  .grupo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grupo input {
+    width: 50rem;
+  }

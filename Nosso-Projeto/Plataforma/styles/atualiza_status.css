@@ -1,0 +1,94 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #495057;
+}
+
+select, input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.voltar {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    height: 40px;
+}
+
+nav a.btn-sair {
+    color: white;
+    background-color: #dc3545;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a.btn-sair:hover {
+    background-color: #bd2130;
+}
+
+.barra-progresso {
+    background-color: #ddd;
+    border-radius: 8px;
+    width: 100px;
+    height: 16px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  .barra-preenchida {
+    background-color: #c62828;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+    transition: width 0.4s ease;
+  }

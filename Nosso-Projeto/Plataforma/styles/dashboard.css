@@ -45,6 +45,7 @@ body {
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s;
+    margin: 0 1rem;
   }
   
   .btn-sair:hover {
@@ -109,7 +110,7 @@ body {
   
   .barra-preenchida {
     height: 100%;
-    background-color: #c62828; /* cor principal */
+    background-color: #c62828 !important; /* cor principal */
     border-radius: 8px 0 0 8px;
     transition: width 0.5s ease;
   }
@@ -119,4 +120,78 @@ body {
     font-size: 0.9rem;
     color: #333;
   }
+  
+  .container-edicao {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .container-edicao h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .container-edicao input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .container-edicao button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .container-edicao a {
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .btn-editar {
+    background-color: #ffc107;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: 600;
+  }
+  
+  .btn-editar:hover {
+    background-color: #e0a800;
+  }
+
+  .btn-editar a {
+    text-decoration: none;
+  }
+
+  .btn-enviar-docs {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-enviar-docs:hover {
+    background-color: #004999;
+  }
+  
+  
   

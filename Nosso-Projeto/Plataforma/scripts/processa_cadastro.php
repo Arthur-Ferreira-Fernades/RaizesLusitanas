@@ -2,54 +2,61 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 session_start();
-require_once("conectaBanco.php");
+require_once 'conectaBanco.php';
 
-// Função de segurança para limpar entrada
-function limpar($valor) {
-  return htmlspecialchars(trim($valor));
+$camposObrigatorios = ['nome', 'email', 'telefone', 'senha', 'nascimento', 'nacionalidade', 'estado_civil', 'endereco', 'cidade', 'estado', 'pais', 'cpf', 'rg', 'Tipo'];
+foreach ($camposObrigatorios as $campo) {
+  if (empty($_POST[$campo])) {
+    $_SESSION['cadastro_erro'] = "Preencha todos os campos obrigatórios.";
+    header("Location: ../cadastro.php");
+    exit;
+  }
 }
 
-// Coleta e validação
-$nome     = limpar($_POST['nome'] ?? '');
-$email    = limpar($_POST['email'] ?? '');
-$telefone = limpar($_POST['telefone'] ?? '');
-$senha    = $_POST['senha'] ?? '';
-
-if (empty($nome) || empty($email) || empty($telefone) || empty($senha)) {
-  $_SESSION['cadastro_erro'] = "Preencha todos os campos.";
-  header("Location: ../cadastro.php");
-  exit;
-}
+// Sanitização dos dados
+$nome = trim($_POST['nome']);
+$email = trim($_POST['email']);
+$telefone = trim($_POST['telefone']);
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+$nascimento = $_POST['nascimento'];
+$nacionalidade = trim($_POST['nacionalidade']);
+$estado_civil = trim($_POST['estado_civil']);
+$endereco = trim($_POST['endereco']);
+$cidade = trim($_POST['cidade']);
+$estado = trim($_POST['estado']);
+$pais = trim($_POST['pais']);
+$cpf = trim($_POST['cpf']);
+$rg = trim($_POST['rg']);
+$admin = ($_POST['Tipo'] == 'admin') ? 'admin' : 'cliente';
 
 // Verifica se e-mail já existe
-$sql = "SELECT UsuId FROM usuarios WHERE Email = ?";
-$stmt = $conexao ->prepare($sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$stmt->store_result();
+$sql_verifica = "SELECT UsuId FROM usuarios WHERE cpf = ?";
+$stmt_verifica = $conexao->prepare($sql_verifica);
+$stmt_verifica->bind_param("s", $cpf);
+$stmt_verifica->execute();
+$stmt_verifica->store_result();
 
-if ($stmt->num_rows > 0) {
-  $_SESSION['mensagem_registro'] = ['tipo' => 'erro', 'texto' => 'Email ja cadastrado.'];
+if ($stmt_verifica->num_rows > 0) {
+  $_SESSION['cadastro_erro'] = "Este usuario já está cadastrado.";
   header("Location: ../cadastro.php");
   exit;
 }
-$stmt->close();
-
-// Hash da senha
-$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
 // Inserção no banco
-$sql = "INSERT INTO usuarios (Nome, Email, Telefone, Senha) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO usuarios (Nome, Email, Telefone, Senha, nascimento, nacionalidade, estado_civil, endereco, cidade, estado, pais, cpf, rg, Tipo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("ssss", $nome, $email, $telefone, $senha_hash);
+$stmt->bind_param("ssssssssssssss", $nome, $email, $telefone, $senha, $nascimento, $nacionalidade, $estado_civil, $endereco, $cidade, $estado, $pais, $cpf, $rg, $admin);
 
 if ($stmt->execute()) {
-  $_SESSION['mensagem_registro'] = ['tipo' => 'sucesso', 'texto' => 'Cadastro realizado com sucesso! Faça login.'];
-  header("Location: ../cadastro.php");
-  exit;
+  $_SESSION['cadastro_sucesso'] = "Conta criada com sucesso!";
 } else {
-  $_SESSION['mensagem_registro'] = ['tipo' => 'erro', 'texto' => 'Erro realizar cadastro. Tente novamente.'];
-  header("Location: ../cadastro.php");
-  exit;
+  $_SESSION['cadastro_erro'] = "Erro ao cadastrar: " . $stmt->error;
 }
+
+$stmt->close();
+header("Location: ../admin.php");
+exit;
+?>

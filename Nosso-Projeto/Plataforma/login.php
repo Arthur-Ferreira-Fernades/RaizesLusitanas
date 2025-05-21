@@ -43,9 +43,7 @@ unset($_SESSION['mensagem_login']);
                     <input type="password" name="senha" class="form-control" required placeholder="Digite sua senha" />
                 </div>
                 <button type="submit" class="btn btn-primary w-100 fw-bold mb-3">Entrar</button>
-                <div class="text-center">
-                    <a href="cadastro.php" class="btn btn-outline-primary w-100 fw-bold">Cadastrar-se</a>
-                </div><br>
+                <br>
                 <div class="form-recuperacao">
                     <a href="recupera_senha.php">Esqueceu sua senha?</a>
                 </div>

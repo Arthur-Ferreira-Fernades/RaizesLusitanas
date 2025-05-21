@@ -1,0 +1,121 @@
+
+.topo {
+    background-color: #c62828;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container-header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .boas-vindas {
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .btn-sair {
+    background-color: #fff;
+    color: #c62828;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-sair:hover {
+    background-color: #f1e4d8;
+  }
+
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* Estilo geral dos cards */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ícone centralizado e estilizado */
+  .card .fa-2x {
+    color: #6c757d;
+    transition: color 0.3s ease;
+  }
+  
+  .card:hover .fa-2x {
+    color: #0d6efd; /* Cor azul ao passar o mouse */
+  }
+  
+  /* Título do documento */
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Badge de status */
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.7em;
+    border-radius: 50px;
+    text-transform: capitalize;
+  }
+  
+  /* Botões */
+  .card .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+  
+  /* Observação de reprovação */
+  .card p.text-danger {
+    font-size: 0.85rem;
+    background-color: #ffe6e6;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Textarea para observação */
+  .card textarea.form-control {
+    font-size: 0.85rem;
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* Espaço entre cards em telas pequenas */
+  @media (max-width: 576px) {
+    .card {
+      width: 100% !important;
+    }
+  }
+  
