@@ -175,9 +175,7 @@ $result = $conexao->query($sql);
                             <td>
                                 <div class="grupo-acoes">
                                     <a href="atualiza_status.php?proc_id=<?= htmlspecialchars($row['ProcId']) ?>" class="btn-acao azul">Atualizar</a>
-                                    <a href="detalhes_cliente.php?proc_id=<?= htmlspecialchars($row['ProcId']) ?>" class="btn-acao verde">Ver Detalhes</a>
-                                    <a href="ver_documentos.php?id=<?= $row['UsuId'] ?>" class="btn btn-secondary">Ver Documentos</a>
-                                    <a href="revisar_documentos.php?usuId=<?= $row['UsuId'] ?>&processoId=<?= $row['ProcId'] ?>" class="btn btn-primary btn-sm">Revisar Documentos</a>
+                                    <a href="detalhes_cliente.php?proc_id=<?= htmlspecialchars($row['ProcId']) ?>" class="btn-acao verde">Ver Detalhes</a>                                    <a href="revisar_documentos.php?usuId=<?= $row['UsuId'] ?>&processoId=<?= $row['ProcId'] ?>" class="btn btn-primary btn-sm">Revisar Documentos</a>
                                 </div>
                             </td>
                         </tr>

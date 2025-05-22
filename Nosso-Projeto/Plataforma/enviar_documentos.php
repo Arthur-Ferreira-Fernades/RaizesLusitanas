@@ -30,7 +30,7 @@ $documentosPorTipo = [
     ['nome' => 'Justificativa/documentação que comprove o motivo do visto', 'icone' => 'fa-solid fa-file-lines'],
     ['nome' => 'NIF', 'icone' => 'fa-solid fa-id-card'],
   ],
-  'Nacionalidade Portuguesa Por Descendencia' => [
+  'Nacionalidade Por Descendencia' => [
     ['nome' => 'Certidão de nascimento do requerente (apostilada e traduzida)', 'icone' => 'fa-solid fa-file-alt'],
     ['nome' => 'Certidão de nascimento do pai/mãe português transcrita em Portugal', 'icone' => 'fa-solid fa-user'],
     ['nome' => 'Documentos que comprovem ligação efetiva à comunidade portuguesa', 'icone' => 'fa-solid fa-users'],
@@ -90,7 +90,6 @@ $stmtTipo->execute();
 $stmtTipo->bind_result($tipoProcesso);
 $stmtTipo->fetch();
 $stmtTipo->close();
-
 if (!isset($documentosPorTipo[$tipoProcesso])) {
   echo "Tipo de processo desconhecido.";
   exit();

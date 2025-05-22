@@ -104,6 +104,7 @@ while ($doc = mysqli_fetch_assoc($result)) {
         <img src="img/logo.png" alt="Raízes Lusitanas" class="logo" />
         <nav>
             <span class="boas-vindas">Painel Administrativo</span>
+            <a href="admin.php" class="btn-sair">Admin</a>
             <a href="scripts/logOff.php" class="btn-sair">Sair</a>
         </nav>
     </div>
@@ -146,8 +147,9 @@ while ($doc = mysqli_fetch_assoc($result)) {
                     } elseif ($status === 'reprovado') {
                         $botao = '<p class="mt-2 text-danger"><strong>Observação:</strong><br>' . nl2br(htmlspecialchars($docInfo['Observacao'])) . '</p>';
                     }
-
-                    $botao = '<a href="' . $docInfo['CaminhoArquivo'] . '" target="_blank" class="btn btn-primary btn-sm mb-2">Visualizar Documento</a><br>' . $botao;
+                    if ($status !== 'reprovado') {
+                        $botao = '<a href="' . $docInfo['CaminhoArquivo'] . '" target="_blank" class="btn btn-primary btn-sm mb-2">Visualizar Documento</a><br>' . $botao;
+                    }
                 } else {
                     $botao = '<p class="text-danger mt-2">Documento ainda não enviado.</p>';
                 }

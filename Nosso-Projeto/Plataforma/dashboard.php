@@ -27,7 +27,7 @@ $usuarioNome = $_SESSION['usuario_nome'];
       <img src="img/logo.png" alt="Raízes Lusitanas" class="logo">
       <nav>
         <span class="boas-vindas">Bem-vindo, <?php echo htmlspecialchars($usuarioNome); ?></span>
-        <a href="editar_perfil.php" class="btn-editar">Editar Perfil</a>
+        <a href="editar_perfil.php" class="btn-sair">Editar Perfil</a>
         <a href="scripts/logOff.php" class="btn-sair">Sair</a>
       </nav>
     </div>

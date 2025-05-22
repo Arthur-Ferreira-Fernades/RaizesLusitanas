@@ -13,11 +13,10 @@ if (!$docId || !$acao) {
     die("Parâmetros obrigatórios ausentes.");
 }
 
-// Buscar dados do documento, processo e cliente
-$query = "SELECT d.NomeArquivo, d.NomeDocumento, p.UsuId, u.Nome AS NomeCliente
+// Busca dados do documento
+$query = "SELECT d.NomeArquivo, d.CaminhoArquivo, d.NomeDocumento 
           FROM documentos d
           JOIN processos p ON d.ProcId = p.ProcId
-          JOIN usuarios u ON p.UsuId = u.UsuId
           WHERE d.DocumentoId = ?";
 $stmt = mysqli_prepare($conexao, $query);
 if (!$stmt) {
@@ -33,52 +32,68 @@ if (!$dados) {
     die("Documento não encontrado.");
 }
 
-$arquivoAtual = $dados['NomeArquivo'];
-$NomeDocumento = $dados['NomeDocumento'];
-$clienteId = $dados['UsuId'];
-$nomeCliente = preg_replace('/[^a-zA-Z0-9-_]/', '_', strtolower($dados['NomeCliente'])); // sanitiza nome
+// Construção ABSOLUTA do caminho
+$basePath = $_SERVER['DOCUMENT_ROOT'] . '/Nosso-Projeto/Plataforma/'; // Ajuste conforme sua estrutura
+$caminhoArquivo = $basePath . $dados['CaminhoArquivo'];
+$diretorio = dirname($caminhoArquivo);
 
-$caminhoArquivo = "uploads/clientes/$clienteId/$arquivoAtual";
+// Verificações reforçadas
+if (!file_exists($caminhoArquivo)) {
+    die("Arquivo não encontrado: " . $caminhoArquivo);
+}
+
+if (!is_dir($diretorio)) {
+    die("Diretório não existe: " . $diretorio);
+}
 
 if ($acao === 'aprovar') {
-    // Renomear arquivo
-    $extensao = pathinfo($arquivoAtual, PATHINFO_EXTENSION);
-    $novoNomeArquivo = "{$nomeCliente}_{$NomeDocumento}." . $extensao;
-    $novoCaminho = "uploads/clientes/$clienteId/$novoNomeArquivo";
+    // Verificação de permissão com caminho absoluto
+    if (!is_writable($diretorio)) {
+        die("Diretório sem permissão (caminho real: $diretorio)");
+    }
 
+    // Sanitização do nome
+    $nomeDocumento = preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($dados['NomeDocumento']));
+    $extensao = pathinfo($dados['NomeArquivo'], PATHINFO_EXTENSION);
+    $novoNomeArquivo = "documento_aprovado_{$nomeDocumento}.{$extensao}";
+    $novoCaminho = $diretorio . DIRECTORY_SEPARATOR . $novoNomeArquivo;
+
+    // Operação de rename com tratamento de erro
     if (!rename($caminhoArquivo, $novoCaminho)) {
-        die("Erro ao renomear o arquivo.");
+        error_log("Falha ao renomear: " . print_r(error_get_last(), true));
+        die("Erro interno ao processar arquivo. Verifique logs.");
     }
 
-    // Atualizar no banco
-    $query = "UPDATE documentos SET Status = 'aprovado', Observacao = NULL, NomeArquivo = ? WHERE DocumentoId = ?";
+    // Atualização do banco de dados
+    $caminhoRelativo = str_replace($basePath, '', $novoCaminho); // Mantém caminho relativo
+    $query = "UPDATE documentos SET 
+              Status = 'aprovado', 
+              Observacao = NULL, 
+              NomeArquivo = ?,
+              CaminhoArquivo = ? 
+              WHERE DocumentoId = ?";
+    
     $stmt = mysqli_prepare($conexao, $query);
-    if (!$stmt) {
-        die("Erro ao preparar update: " . mysqli_error($conexao));
-    }
-    mysqli_stmt_bind_param($stmt, "si", $novoNomeArquivo, $docId);
+    mysqli_stmt_bind_param($stmt, "ssi", $novoNomeArquivo, $caminhoRelativo, $docId);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
 } elseif ($acao === 'reprovar') {
-    // Excluir arquivo
-    if (file_exists($caminhoArquivo)) {
-        unlink($caminhoArquivo);
+    // Exclusão com verificação
+    if (!unlink($caminhoArquivo)) {
+        error_log("Falha ao excluir: " . print_r(error_get_last(), true));
+        die("Erro ao remover arquivo físico.");
     }
 
-    // Atualizar status e observação no banco
-    $query = "UPDATE documentos SET Status = 'reprovado', Observacao = ? WHERE DocumentoId = ?";
+    $query = "UPDATE documentos SET 
+              Status = 'reprovado', 
+              Observacao = ? 
+              WHERE DocumentoId = ?";
     $stmt = mysqli_prepare($conexao, $query);
-    if (!$stmt) {
-        die("Erro ao preparar update: " . mysqli_error($conexao));
-    }
     mysqli_stmt_bind_param($stmt, "si", $observacao, $docId);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-} else {
-    die("Ação inválida.");
 }
 
-// Redireciona de volta
 header("Location: " . $_SERVER['HTTP_REFERER']);
 exit;

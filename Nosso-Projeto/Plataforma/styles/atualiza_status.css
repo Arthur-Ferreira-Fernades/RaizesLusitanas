@@ -64,15 +64,18 @@ button:hover {
 }
 
 nav a.btn-sair {
-    color: white;
-    background-color: #dc3545;
-    padding: 8px 12px;
-    border-radius: 6px;
+    background-color: #fff;
+    color: #c62828;
+    padding: 8px 15px;
     text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 0 1rem;
 }
 
 nav a.btn-sair:hover {
-    background-color: #bd2130;
+    background-color: #f1e4d8;
 }
 
 .barra-progresso {
